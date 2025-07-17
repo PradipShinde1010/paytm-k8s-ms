@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paytm Clone - Digital Payment Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #00baf2;
+            --secondary-color: #0f4a8a;
+            --accent-color: #ff6b6b;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,9 +24,11 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
         }
         
         .container {
@@ -23,55 +37,208 @@
             padding: 20px;
         }
         
+        /* Animated Background */
+        .bg-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.15);
+            bottom: -160px;
+            animation: square 25s infinite;
+            transition-timing-function: linear;
+            border-radius: 5px;
+        }
+        
+        @keyframes square {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .bg-bubbles li:nth-child(1) {
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+            animation-duration: 17s;
+        }
+        
+        .bg-bubbles li:nth-child(2) {
+            left: 20%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 22s;
+        }
+        
+        .bg-bubbles li:nth-child(3) {
+            left: 25%;
+            animation-delay: 4s;
+        }
+        
+        .bg-bubbles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+        
+        .bg-bubbles li:nth-child(5) {
+            left: 70%;
+        }
+        
+        .bg-bubbles li:nth-child(6) {
+            left: 80%;
+            width: 120px;
+            height: 120px;
+            animation-delay: 3s;
+        }
+        
+        .bg-bubbles li:nth-child(7) {
+            left: 32%;
+            width: 160px;
+            height: 160px;
+            animation-delay: 7s;
+        }
+        
+        .bg-bubbles li:nth-child(8) {
+            left: 55%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 15s;
+            animation-duration: 30s;
+        }
+        
+        .bg-bubbles li:nth-child(9) {
+            left: 25%;
+            width: 10px;
+            height: 10px;
+            animation-delay: 2s;
+            animation-duration: 25s;
+        }
+        
+        .bg-bubbles li:nth-child(10) {
+            left: 90%;
+            width: 160px;
+            height: 160px;
+            animation-delay: 11s;
+        }
+        
         header {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
             text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transform: translateY(0);
+            transition: var(--transition);
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         h1 {
             color: white;
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #ffffff, #e0f7fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
         
         .subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2em;
-            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
         
         .service-selector {
-            margin: 20px 0;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         
         .dropdown {
             position: relative;
             display: inline-block;
-            width: 300px;
+            width: 280px;
+            margin: 10px;
+            perspective: 1000px;
         }
         
         .dropdown-button {
             background: rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 15px 20px;
+            padding: 18px 25px;
             font-size: 16px;
+            font-weight: 500;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             width: 100%;
             text-align: left;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dropdown-button i {
+            margin-right: 10px;
+            font-size: 1.2em;
         }
         
         .dropdown-button:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dropdown-button:active {
+            transform: translateY(1px);
         }
         
         .dropdown-content {
@@ -79,26 +246,53 @@
             position: absolute;
             background: rgba(255, 255, 255, 0.95);
             min-width: 100%;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            margin-top: 5px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            margin-top: 10px;
             max-height: 400px;
             overflow-y: auto;
+            transform-origin: top center;
+            animation: growDown 0.3s ease-out forwards;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        @keyframes growDown {
+            0% {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+            80% {
+                transform: scaleY(1.1);
+            }
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
         }
         
         .dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
+            color: var(--text-dark);
+            padding: 15px 20px;
             text-decoration: none;
-            display: block;
-            transition: background-color 0.3s;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dropdown-content a i {
+            margin-right: 12px;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            width: 24px;
+            text-align: center;
         }
         
         .dropdown-content a:hover {
-            background-color: rgba(102, 126, 234, 0.1);
+            background-color: rgba(0, 186, 242, 0.08);
+            padding-left: 25px;
         }
         
         .dropdown-content a:last-child {
@@ -111,62 +305,140 @@
         
         .categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .category {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 25px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: var(--transition);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: backwards;
         }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .category:nth-child(1) { animation-delay: 0.1s; }
+        .category:nth-child(2) { animation-delay: 0.2s; }
+        .category:nth-child(3) { animation-delay: 0.3s; }
+        .category:nth-child(4) { animation-delay: 0.4s; }
         
         .category h2 {
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.8em;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .services {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
         
         .service-card {
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px;
             cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
+            transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
         }
         
         .service-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(100%);
         }
         
         .service-card h3 {
             color: white;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-card h3 i {
+            font-size: 1.1em;
         }
         
         .service-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
         
         .service-card .port {
             color: #ffd700;
-            font-weight: bold;
-            font-size: 0.8em;
+            font-weight: 600;
+            font-size: 0.85em;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
         }
         
+        /* Floating animation for cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .service-card:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        /* Responsive design */
         @media (max-width: 768px) {
             .dropdown {
                 width: 100%;
@@ -175,33 +447,153 @@
             .categories {
                 grid-template-columns: 1fr;
             }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+        }
+        
+        /* Pulse animation for attention */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Tooltip for service cards */
+        .service-card .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .service-card .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        .service-card:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            box-shadow: 0 4px 20px rgba(0, 186, 242, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 6px 25px rgba(0, 186, 242, 0.4);
         }
     </style>
 </head>
 <body>
+    <!-- Animated background bubbles -->
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
     <div class="container">
         <header>
             <h1>Paytm Clone</h1>
             <p class="subtitle">Complete Digital Payment & Financial Services Platform</p>
             
             <div class="service-selector">
-                <div class="dropdown" id="serviceDropdown">
-                    <button class="dropdown-button" onclick="toggleDropdown()">
-                        Select a Service to Access ▼
+                <!-- Payment Services Dropdown -->
+                <div class="dropdown" id="paymentDropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown('paymentDropdown')">
+                        <i class="fas fa-credit-card"></i> Payment Services ▼
                     </button>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <a href="/payment-gateway" target="_blank">🏦 Payment Gateway (Port: 9001)</a>
-                        <a href="/wallet-service" target="_blank">💰 Wallet Service (Port: 9002)</a>
-                        <a href="/transaction-service" target="_blank">📊 Transaction Service (Port: 9003)</a>
-                        <a href="/user-service" target="_blank">👤 User Service (Port: 9004)</a>
-                        <a href="/profile-service" target="_blank">📋 Profile Service (Port: 9005)</a>
-                        <a href="/kyc-service" target="_blank">🔐 KYC Service (Port: 9006)</a>
-                        <a href="/bank-service" target="_blank">🏦 Bank Service (Port: 9007)</a>
-                        <a href="/loan-service" target="_blank">💰 Loan Service (Port: 9008)</a>
-                        <a href="/investment-service" target="_blank">📈 Investment Service (Port: 9009)</a>
-                        <a href="/email-service" target="_blank">📧 Email Service (Port: 9010)</a>
-                        <a href="/sms-service" target="_blank">📱 SMS Service (Port: 9011)</a>
-                        <a href="/push-service" target="_blank">🔔 Push Service (Port: 9012)</a>
+                    <div class="dropdown-content">
+                        <a href="/payment-gateway" target="_blank"><i class="fas fa-exchange-alt"></i> Payment Gateway (Port: 9001)</a>
+                        <a href="/wallet-service" target="_blank"><i class="fas fa-wallet"></i> Wallet Service (Port: 9002)</a>
+                        <a href="/transaction-service" target="_blank"><i class="fas fa-receipt"></i> Transaction Service (Port: 9003)</a>
+                    </div>
+                </div>
+                
+                <!-- User Management Dropdown -->
+                <div class="dropdown" id="userDropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown('userDropdown')">
+                        <i class="fas fa-users"></i> User Management ▼
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/user-service" target="_blank"><i class="fas fa-user"></i> User Service (Port: 9004)</a>
+                        <a href="/profile-service" target="_blank"><i class="fas fa-id-card"></i> Profile Service (Port: 9005)</a>
+                        <a href="/kyc-service" target="_blank"><i class="fas fa-user-check"></i> KYC Service (Port: 9006)</a>
+                    </div>
+                </div>
+                
+                <!-- Financial Services Dropdown -->
+                <div class="dropdown" id="financeDropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown('financeDropdown')">
+                        <i class="fas fa-chart-line"></i> Financial Services ▼
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/bank-service" target="_blank"><i class="fas fa-university"></i> Bank Service (Port: 9007)</a>
+                        <a href="/loan-service" target="_blank"><i class="fas fa-hand-holding-usd"></i> Loan Service (Port: 9008)</a>
+                        <a href="/investment-service" target="_blank"><i class="fas fa-piggy-bank"></i> Investment Service (Port: 9009)</a>
+                    </div>
+                </div>
+                
+                <!-- Notification Services Dropdown -->
+                <div class="dropdown" id="notifyDropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown('notifyDropdown')">
+                        <i class="fas fa-bell"></i> Notification Services ▼
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/email-service" target="_blank"><i class="fas fa-envelope"></i> Email Service (Port: 9010)</a>
+                        <a href="/sms-service" target="_blank"><i class="fas fa-sms"></i> SMS Service (Port: 9011)</a>
+                        <a href="/push-service" target="_blank"><i class="fas fa-mobile-alt"></i> Push Service (Port: 9012)</a>
                     </div>
                 </div>
             </div>
@@ -209,96 +601,123 @@
         
         <div class="categories">
             <div class="category">
-                <h2>💳 Payment Services</h2>
+                <h2><i class="fas fa-credit-card"></i> Payment Services</h2>
                 <div class="services">
                     <div class="service-card" onclick="openService('payment-gateway')">
-                        <h3>Payment Gateway</h3>
-                        <p>Secure payment processing for all transactions</p>
+                        <h3><i class="fas fa-exchange-alt"></i> Payment Gateway</h3>
+                        <p>Secure payment processing for all transactions with fraud detection and multi-layer security</p>
                         <div class="port">Port: 9001</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('wallet-service')">
-                        <h3>Wallet Service</h3>
-                        <p>Digital wallet management and operations</p>
+                        <h3><i class="fas fa-wallet"></i> Wallet Service</h3>
+                        <p>Digital wallet management with balance tracking, transfers, and transaction history</p>
                         <div class="port">Port: 9002</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('transaction-service')">
-                        <h3>Transaction Service</h3>
-                        <p>Transaction history and tracking</p>
+                        <h3><i class="fas fa-receipt"></i> Transaction Service</h3>
+                        <p>Comprehensive transaction history with search, filter, and export capabilities</p>
                         <div class="port">Port: 9003</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                 </div>
             </div>
             
             <div class="category">
-                <h2>👤 User Management</h2>
+                <h2><i class="fas fa-users"></i> User Management</h2>
                 <div class="services">
                     <div class="service-card" onclick="openService('user-service')">
-                        <h3>User Service</h3>
-                        <p>User registration and authentication</p>
+                        <h3><i class="fas fa-user"></i> User Service</h3>
+                        <p>User registration, authentication, and session management with OAuth 2.0 support</p>
                         <div class="port">Port: 9004</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('profile-service')">
-                        <h3>Profile Service</h3>
-                        <p>User profile and settings management</p>
+                        <h3><i class="fas fa-id-card"></i> Profile Service</h3>
+                        <p>User profile management with preferences, settings, and personal information</p>
                         <div class="port">Port: 9005</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('kyc-service')">
-                        <h3>KYC Service</h3>
-                        <p>Know Your Customer verification</p>
+                        <h3><i class="fas fa-user-check"></i> KYC Service</h3>
+                        <p>Know Your Customer verification with document upload and validation</p>
                         <div class="port">Port: 9006</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                 </div>
             </div>
             
             <div class="category">
-                <h2>🏦 Financial Services</h2>
+                <h2><i class="fas fa-chart-line"></i> Financial Services</h2>
                 <div class="services">
                     <div class="service-card" onclick="openService('bank-service')">
-                        <h3>Bank Service</h3>
-                        <p>Bank account linking and management</p>
+                        <h3><i class="fas fa-university"></i> Bank Service</h3>
+                        <p>Bank account linking with multiple banks, balance checks, and fund transfers</p>
                         <div class="port">Port: 9007</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('loan-service')">
-                        <h3>Loan Service</h3>
-                        <p>Personal and business loan processing</p>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Loan Service</h3>
+                        <p>Personal and business loan processing with EMI calculator and application tracking</p>
                         <div class="port">Port: 9008</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('investment-service')">
-                        <h3>Investment Service</h3>
-                        <p>Investment portfolio management</p>
+                        <h3><i class="fas fa-piggy-bank"></i> Investment Service</h3>
+                        <p>Investment portfolio management with mutual funds, stocks, and gold investments</p>
                         <div class="port">Port: 9009</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                 </div>
             </div>
             
             <div class="category">
-                <h2>📱 Notification Services</h2>
+                <h2><i class="fas fa-bell"></i> Notification Services</h2>
                 <div class="services">
                     <div class="service-card" onclick="openService('email-service')">
-                        <h3>Email Service</h3>
-                        <p>Email notification delivery</p>
+                        <h3><i class="fas fa-envelope"></i> Email Service</h3>
+                        <p>Email notification delivery with templates, scheduling, and delivery tracking</p>
                         <div class="port">Port: 9010</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('sms-service')">
-                        <h3>SMS Service</h3>
-                        <p>SMS notification and alerts</p>
+                        <h3><i class="fas fa-sms"></i> SMS Service</h3>
+                        <p>SMS notifications and alerts with delivery reports and template management</p>
                         <div class="port">Port: 9011</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                     <div class="service-card" onclick="openService('push-service')">
-                        <h3>Push Service</h3>
-                        <p>Push notification management</p>
+                        <h3><i class="fas fa-mobile-alt"></i> Push Service</h3>
+                        <p>Push notification management for mobile apps with targeting and analytics</p>
                         <div class="port">Port: 9012</div>
+                        <span class="tooltip">Click to access service</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Floating action button -->
+    <div class="fab" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
     <script>
-        function toggleDropdown() {
-            document.getElementById("serviceDropdown").classList.toggle("show");
+        // Toggle dropdown
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle("show");
+            
+            // Close other dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id !== id && dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            });
         }
         
+        // Open service in new tab
         function openService(serviceName) {
             window.open(`/${serviceName}`, '_blank');
         }
@@ -306,15 +725,52 @@
         // Close dropdown when clicking outside
         window.onclick = function(event) {
             if (!event.target.matches('.dropdown-button')) {
-                var dropdowns = document.getElementsByClassName("dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
+                const dropdowns = document.querySelectorAll(".dropdown");
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
                     }
-                }
+                });
             }
         }
+        
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show/hide floating button based on scroll
+        window.onscroll = function() {
+            const fab = document.querySelector('.fab');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                fab.style.display = 'flex';
+            } else {
+                fab.style.display = 'none';
+            }
+        };
+        
+        // Add ripple effect to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+            });
+        });
     </script>
 </body>
 </html>
