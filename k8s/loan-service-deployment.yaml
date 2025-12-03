@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: loan-service
-        image: kastrov/loan-service:BUILD_NUMBER
+        image: pradipshinde/loan-service:BUILD_NUMBER
         ports:
         - containerPort: 9008
         env:
