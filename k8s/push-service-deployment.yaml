@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: push-service
-        image: kastrov/push-service:BUILD_NUMBER
+        image: pradipshinde/push-service:BUILD_NUMBER
         ports:
         - containerPort: 9012
         env:
