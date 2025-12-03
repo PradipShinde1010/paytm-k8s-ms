@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: email-service
-        image: kastrov/email-service:BUILD_NUMBER
+        image: pradipshinde/email-service:BUILD_NUMBER
         ports:
         - containerPort: 9010
         env:
