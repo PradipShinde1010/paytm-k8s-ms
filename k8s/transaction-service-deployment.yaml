@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: transaction-service
-        image: kastrov/transaction-service:BUILD_NUMBER
+        image: pradipshinde/transaction-service:BUILD_NUMBER
         ports:
         - containerPort: 9003
         env:
