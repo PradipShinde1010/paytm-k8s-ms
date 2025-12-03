@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: kyc-service
-        image: kastrov/kyc-service:BUILD_NUMBER
+        image: pradipshinde/kyc-service:BUILD_NUMBER
         ports:
         - containerPort: 9006
         env:
