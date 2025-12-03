@@ -27,16 +27,16 @@ pipeline {
     }
     
     environment {
-        DOCKER_HUB_USERNAME = 'kastrov'
+        DOCKER_HUB_USERNAME = 'pradipshinde'
         AWS_REGION = 'us-east-1'
-        EKS_CLUSTER = 'kastro-cluster'
+        EKS_CLUSTER = 'kastro-eks'
         NAMESPACE = 'paytm-app'
     }
     
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/KastroVKiran/paytm-k8s-ms.git'
+                git branch: 'master', url: 'https://github.com/PradipShinde1010/paytm-k8s-ms.git'
             }
         }
         
