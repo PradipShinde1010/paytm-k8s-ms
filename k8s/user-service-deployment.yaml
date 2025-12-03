@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: kastrov/user-service:BUILD_NUMBER
+        image: pradipshinde/user-service:BUILD_NUMBER
         ports:
         - containerPort: 9004
         env:
