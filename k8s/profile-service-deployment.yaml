@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: profile-service
-        image: kastrov/profile-service:BUILD_NUMBER
+        image: pradipshinde/profile-service:BUILD_NUMBER
         ports:
         - containerPort: 9005
         env:
