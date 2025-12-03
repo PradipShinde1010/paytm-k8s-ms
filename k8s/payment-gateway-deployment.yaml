@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: payment-gateway
-        image: kastrov/payment-gateway:BUILD_NUMBER
+        image: pradipshinde/payment-gateway:BUILD_NUMBER
         ports:
         - containerPort: 9001
         env:
