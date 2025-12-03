@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: bank-service
-        image: kastrov/bank-service:BUILD_NUMBER
+        image: pradipshinde/bank-service:BUILD_NUMBER
         ports:
         - containerPort: 9007
         env:
