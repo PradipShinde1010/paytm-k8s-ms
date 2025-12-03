@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: investment-service
-        image: kastrov/investment-service:BUILD_NUMBER
+        image: pradipshinde/investment-service:BUILD_NUMBER
         ports:
         - containerPort: 9009
         env:
