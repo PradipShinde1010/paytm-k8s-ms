@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sms-service
-        image: kastrov/sms-service:BUILD_NUMBER
+        image: pradipshinde/sms-service:BUILD_NUMBER
         ports:
         - containerPort: 9011
         env:
